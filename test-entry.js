@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 require('babel-register')({
 	presets: [
 		[

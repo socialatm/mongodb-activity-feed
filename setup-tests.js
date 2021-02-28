@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import Mocha from 'mocha'
 
 import config from './src/config'

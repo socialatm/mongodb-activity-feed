@@ -23,7 +23,7 @@
 	"scripts": {
 		"precommit": "npx pretty-quick --staged",
 		"build": "npx babel src --out-dir dist --ignore node_modules",
-		"test": "NODE_ENV=test node_modules/mocha/bin/_mocha --timeout 15000 --require test-entry.js \"test/**/*.js\"",
+		"test": "mocha --timeout 15000 --require test-entry.js \"test/**/*.js\"",
 		"lint": "npx eslint \"**/*.js\"",
 		"prettier": "npx prettier \"**/*.js\" --write"
 	},
