@@ -8,8 +8,8 @@ It uses [CRDTs](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type
 
 ### Install
 
-```bash
-yarn add mongodb-activity-feed
+```node
+npm install mongodb-activity-feed
 ```
 
 ### MongoDB & Redis Activity Feed
