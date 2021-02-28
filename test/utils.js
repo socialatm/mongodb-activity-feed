@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import mongoose from 'mongoose'
 import redis from '../src/utils/redis'
 

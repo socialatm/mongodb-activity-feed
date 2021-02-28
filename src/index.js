@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import Activity from './models/activity'
 import FeedGroup from './models/feed_group'
 import Feed from './models/feed'

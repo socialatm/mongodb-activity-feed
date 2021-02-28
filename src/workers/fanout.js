@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import redis from '../utils/redis'
 import db from '../utils/db'
 import { FeedManager } from '../index'

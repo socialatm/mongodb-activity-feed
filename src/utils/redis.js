@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import Redis from 'ioredis'
 
 import config from '../config'

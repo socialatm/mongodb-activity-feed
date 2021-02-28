@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 function chunkify(iterable, size) {
 	const chunks = []
 	for (let i = 0, j = iterable.length; i < j; i += size) {
