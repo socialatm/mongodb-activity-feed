@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /*
 Handy libs
 https://www.npmjs.com/package/stats-lite
