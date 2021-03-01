@@ -19,6 +19,7 @@ brew install redis mongodb
 brew services start redis
 brew services start mongodb
 ```
+https://riptutorial.com/redis/example/29962/installing-and-running-redis-server-on-windows
 
 ### Initialization
 
