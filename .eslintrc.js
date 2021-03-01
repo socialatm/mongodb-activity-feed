@@ -28,5 +28,6 @@ module.exports = {
 		'quote-props': ['warn', 'consistent-as-needed'],
 		'no-console': 0,
 		'keyword-spacing': ['error'],
+		'linebreak-style': 0,
 	},
 }
