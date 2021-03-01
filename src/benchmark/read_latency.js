@@ -1,3 +1,5 @@
+/* eslint-disable linebreak-style */
+// eslint-disable-next-line linebreak-style
 import './loadenv'
 import { getStreamClient, Timer, runBenchmark } from './utils'
 

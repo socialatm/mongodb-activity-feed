@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import './loadenv'
 import ioS from 'socket.io'
 

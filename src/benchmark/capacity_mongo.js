@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /*
 Our last test is a little more complex. For this test we set up 100 feeds.
 The first 50 feeds are followed by 5 other feeds. Feed 50-60 are followed by 100 other feeds, 60-70 by 1,000 feeds, 70-80 by 2,000

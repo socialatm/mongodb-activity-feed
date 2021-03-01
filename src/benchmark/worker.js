@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import './loadenv'
 import { getFeedManager, SETTINGS } from './utils'
 

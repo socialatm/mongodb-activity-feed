@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import { getFeedManager } from './utils'
 
 const fm = getFeedManager()
