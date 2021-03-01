@@ -6,5 +6,4 @@ function chunkify(iterable, size) {
 	}
 	return chunks
 }
-
 export default chunkify
