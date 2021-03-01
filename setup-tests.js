@@ -5,22 +5,6 @@ import config from './src/config'
 import logger from './src/utils/logger'
 import { dropDBs } from './test/utils'
 
-/*
-api.use((err, req, res, next) => {
-	if (err) {
-		logger.error(err.stack);
-		if (err.request) {
-			logger.error(`REQUEST = ${stringify(err.request)}`);
-		}
-		if (err.response) {
-			logger.error(`RESPONSE = ${stringify(err.response)}`);
-		}
-	}
-	next(err, req, res);
-});
-
-chai.use(chaiHttp);*/
-
 function wrapMocha(onPrepare, onUnprepare) {
 	// Monkey-patch run method
 	const run = Mocha.prototype.run
@@ -71,13 +55,6 @@ wrapMocha(
 
 		//XXX: drop all data before running tests
 		await dropDBs()
-
-		/*
-		fs.readdirSync(path.join(__dirname, 'src', 'routes')).forEach(file => {
-			if (file.endsWith('.js')) {
-				require(`./src/routes/${file}`)(api);
-			}
-		});*/
 	},
 	failures => {
 		//XXX: it seems Travis-ci is having trouble with process wrap-up procedures so lets

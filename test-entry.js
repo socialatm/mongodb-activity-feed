@@ -23,5 +23,4 @@ require('babel-register')({
 })
 
 // Do Mocking here if needed
-
 require('./setup-tests')
