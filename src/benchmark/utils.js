@@ -45,6 +45,9 @@ export function getFeedManager() {
 				bufferMaxEntries: 0,
 				keepAlive: 120,
 				useNewUrlParser: true,
+				useUnifiedTopology: true,
+				useFindAndModify: false,
+				useCreateIndex: true,
 			},
 		)
 		if (process.env.MONGO_DEBUG === '1') {
