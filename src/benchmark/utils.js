@@ -39,8 +39,6 @@ export function getFeedManager() {
 			{
 				dbName: 'benchmark',
 				autoIndex: true,
-				reconnectTries: Number.MAX_VALUE,
-				reconnectInterval: 500,
 				poolSize: 50,
 				bufferMaxEntries: 0,
 				keepAlive: 120,

@@ -19,6 +19,7 @@ brew install redis mongodb
 brew services start redis
 brew services start mongodb
 ```
+
 https://riptutorial.com/redis/example/29962/installing-and-running-redis-server-on-windows
 
 ### Initialization
@@ -45,11 +46,13 @@ const mongo = mongoose.connect(
 	'mongodb://localhost:27017/mydb',
 	{
 		autoIndex: true,
-		reconnectTries: Number.MAX_VALUE,
-		reconnectInterval: 500,
 		poolSize: 50,
 		bufferMaxEntries: 0,
 		keepAlive: 120,
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+		useFindAndModify: false,
+		useCreateIndex: true,
 	},
 )
 const fayeFirehose = new FayeFirehose('http://localhost:8000/faye')
