@@ -2,7 +2,6 @@
 import { dropDBs } from '../../test/utils.js'
 import redis from '../../src/utils/redis'
 import db from '../../src/utils/db'
-
 import { expect } from 'chai'
 import http from 'http'
 import faye from 'faye'
