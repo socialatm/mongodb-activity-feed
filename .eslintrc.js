@@ -6,7 +6,7 @@ module.exports = {
 		'shared-node-browser': true,
 		mocha: true,
 	},
-	extends: ['eslint:recommended', 'plugin:react/recommended'],
+	extends: ['eslint:recommended'],
 	parser: 'babel-eslint',
 	parserOptions: {
 		ecmaFeatures: {
@@ -15,7 +15,7 @@ module.exports = {
 		},
 		sourceType: 'module',
 	},
-	plugins: ['react'],
+	plugins: [],
 	rules: {
 		indent: ['error', 'tab'],
 		'linebreak-style': ['error', 'unix'],
@@ -24,10 +24,8 @@ module.exports = {
 		semi: ['error', 'never'],
 		'comma-dangle': ['error', 'always-multiline'],
 		'no-case-declarations': 'off',
-		'react/jsx-sort-props': 'error',
 		eqeqeq: 'warn',
 		'quote-props': ['warn', 'consistent-as-needed'],
-		'react/no-deprecated': 'off',
 		'no-console': 0,
 		'keyword-spacing': ['error'],
 	},
