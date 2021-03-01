@@ -1,7 +1,6 @@
 /* eslint-disable linebreak-style */
 import Mocha from 'mocha'
 import config from './src/config'
-import logger from './src/utils/logger'
 import { dropDBs } from './test/utils'
 
 function wrapMocha(onPrepare, onUnprepare) {
