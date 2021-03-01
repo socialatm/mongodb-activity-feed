@@ -155,7 +155,7 @@ export class FeedManager {
 		const follow = await Follow.findOneAndDelete({ source, target })
 
 		// remove the activities with the given origin
-		await ActivityFeed.remove({
+		await ActivityFeed.deleteOne({
 			feed: source,
 			origin: target,
 		})
