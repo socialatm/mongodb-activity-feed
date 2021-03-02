@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 import config from '../config'
 import winston from 'winston'
 

@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 import mongoose, { Schema } from 'mongoose'
 import timestamps from 'mongoose-timestamp'
 import autopopulate from 'mongoose-autopopulate'

@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 import dotenv from 'dotenv'
 import path from 'path'
 

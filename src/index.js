@@ -1,10 +1,9 @@
-/* eslint-disable linebreak-style */
-import Activity from './models/activity'
-import FeedGroup from './models/feed_group'
-import Feed from './models/feed'
-import ActivityFeed from './models/activity_feed'
-import Follow from './models/follow'
-import chunkify from './utils/chunk'
+import Activity from './models/activity.js'
+import FeedGroup from './models/feed_group.js'
+import Feed from './models/feed.js'
+import ActivityFeed from './models/activity_feed.js'
+import Follow from './models/follow.js'
+import chunkify from './utils/chunk.js'
 import Redlock from 'redlock'
 import Queue from 'bull'
 import faye from 'faye'
@@ -215,7 +214,6 @@ export class FeedManager {
 		if (promises.length > 0) {
 			await Promise.all(promises)
 		}
-
 		return activity
 	}
 

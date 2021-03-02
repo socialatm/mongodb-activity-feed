@@ -1,6 +1,5 @@
-/* eslint-disable linebreak-style */
-import './loadenv'
-import { getFeedManager, SETTINGS } from './utils'
+import './loadenv.js'
+import { getFeedManager, SETTINGS } from './utils.js'
 
 const fm = getFeedManager()
 
