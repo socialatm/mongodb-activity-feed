@@ -1,8 +1,7 @@
-import redis from '../utils/redis'
 import db from '../utils/db'
 import { FeedManager } from '../index'
 
-let fm = new FeedManager(db, redis)
+let fm = new FeedManager(db)
 
 fm.queue.process(5, job => {
 	let activity = job.data.activity
