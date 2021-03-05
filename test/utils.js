@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
-import redis from '../src/utils/redis'
-import db from '../src/utils/db'
+require('../src/utils/db.js')
+const db = mongoose.connection
 
 export async function loadFixture(...fixtures) {
 	const filters = {}
@@ -48,6 +48,5 @@ export async function loadFixture(...fixtures) {
 
 export async function dropDBs() {
 	const mongo = await db
-	await mongo.connection.dropDatabase()
-	await redis.send_command('FLUSHDB')
+	await mongo.dropDatabase()
 }
