@@ -4,7 +4,6 @@ import Feed from './models/feed.js'
 import ActivityFeed from './models/activity_feed.js'
 import Follow from './models/follow.js'
 import chunkify from './utils/chunk.js'
-import Redlock from 'redlock'
 import Queue from 'bull'
 import faye from 'faye'
 import ioClient from 'socket.io-client'
@@ -76,7 +75,6 @@ export class FeedManager {
 	constructor(mongoConnection, redisConnection, options) {
 		this.mongoConnection = mongoConnection
 		this.redisConnection = redisConnection
-		this.redlock = this._createLock()
 		this.queue = new Queue('activity feed', redisConnection)
 		if (!options) {
 			options = {}
@@ -102,9 +100,9 @@ export class FeedManager {
 				await Follow.bulkWrite(operations, {
 					ordered: false,
 				})
-			} catch (e) {
+			} catch (err) {
 				// dont fail on records that already exist
-				if (e.code !== 11000) throw e
+				if (err.code !== 11000) throw err
 			}
 		}
 
@@ -120,7 +118,6 @@ export class FeedManager {
 
 			// get the activity references
 			for (const [sourceID, targetIDs] of Object.entries(grouped)) {
-				const lock = await this.redlock.lock(`followLock${sourceID}`, 10 * 1000)
 				const activityReferences = await ActivityFeed.find({
 					feed: { $in: targetIDs },
 				})
@@ -138,7 +135,7 @@ export class FeedManager {
 				if (operations.length >= 1) {
 					await ActivityFeed.bulkWrite(operations, { ordered: false })
 				}
-				await lock.unlock()
+				//await lock.unlock()
 			}
 		}
 	}
@@ -148,8 +145,6 @@ export class FeedManager {
 	}
 
 	async unfollow(source, target) {
-		const lock = await this.redlock.lock(`followLock${source._id}`, 10 * 1000)
-
 		// create the follow relationship
 		const follow = await Follow.findOneAndDelete({ source, target })
 
@@ -159,7 +154,7 @@ export class FeedManager {
 			origin: target,
 		})
 
-		await lock.unlock()
+		//await lock.unlock()
 		return follow
 	}
 
@@ -419,31 +414,5 @@ export class FeedManager {
 			feed,
 			OPERATIONS.REMOVE_OPERATION,
 		)
-	}
-
-	_createLock() {
-		let redlock = new Redlock(
-			// you should have one client for each independent redis node
-			// or cluster
-			[this.redisConnection],
-			{
-				// the expected clock drift; for more details
-				// see http://redis.io/topics/distlock
-				driftFactor: 0.01, // time in ms
-
-				// the max number of times Redlock will attempt
-				// to lock a resource before erroring
-				retryCount: 3,
-
-				// the time in ms between attempts
-				retryDelay: 300, // time in ms
-
-				// the max time in ms randomly added to retries
-				// to improve performance under high contention
-				// see https://www.awsarchitectureblog.com/2015/03/backoff.html
-				retryJitter: 200, // time in ms
-			},
-		)
-		return redlock
 	}
 }
