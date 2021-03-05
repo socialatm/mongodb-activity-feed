@@ -1,39 +1,19 @@
 import mongoose from 'mongoose'
-import config from '../config'
-import logger from './logger'
-
 mongoose.Promise = global.Promise
 
-const connection = mongoose.connect(
-	config.database.uri,
+mongoose.connect(
+	'mongodb://localhost:27017/test',
 	{
-		autoIndex: true,
-		poolSize: 50,
-		bufferMaxEntries: 0,
-		keepAlive: 120,
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 		useFindAndModify: false,
 		useCreateIndex: true,
 	},
 )
-
-connection
-	.then(db => {
-		logger.info(
-			`Successfully connected to ${config.database.uri} MongoDB cluster in ${
-				config.env
-			} mode.`,
-		)
-		return db
+mongoose.connection
+	.once('open', () => {
+		console.log('Connection to DB established')
 	})
-	.catch(err => {
-		if (err.message.code === 'ETIMEDOUT') {
-			logger.info('Attempting to re-establish database connection.')
-			mongoose.connect(config.database.uri)
-		} else {
-			logger.error('Error while attempting to connect to database:', { err })
-		}
+	.on('error', error => {
+		console.warn('Warning', error)
 	})
-
-export default connection
