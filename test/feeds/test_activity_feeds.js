@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 import { dropDBs } from '../../test/utils.js'
 import redis from '../../src/utils/redis'
 import db from '../../src/utils/db'
