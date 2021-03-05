@@ -1,6 +1,5 @@
 import Mocha from 'mocha'
-import config from './src/config'
-import { dropDBs } from './test/utils'
+import { dropDBs } from './test/utils.js'
 
 function wrapMocha(onPrepare, onUnprepare) {
 	// Monkey-patch run method
@@ -30,25 +29,6 @@ function wrapMocha(onPrepare, onUnprepare) {
 }
 
 wrapMocha(async () => {
-	if (!config.database.uri)
-		throw new Error('Missing MongoDB connection string. Check config')
-	if (!config.redis.uri)
-		throw new Error('Missing Redis connection string. Check config')
-	if (
-		!config.database.uri.includes('localhost') &&
-		!config.database.uri.includes('127.0.0.1')
-	)
-		throw new Error(
-			'MongoDB connection string contains non-local address. For safety reasons test suite can only connect to local databases. Check config',
-		)
-	if (
-		!config.redis.uri.includes('localhost') &&
-		!config.redis.uri.includes('127.0.0.1')
-	)
-		throw new Error(
-			'Redis connection string contains non-local address. For safety reasons test suite can only connect to local databases. Check config',
-		)
-
 	//XXX: drop all data before running tests
 	await dropDBs()
 })
