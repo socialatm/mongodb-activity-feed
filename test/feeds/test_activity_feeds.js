@@ -1,5 +1,4 @@
 import { dropDBs } from '../../test/utils.js'
-import redis from '../../src/utils/redis'
 import db from '../../src/utils/db'
 import { expect } from 'chai'
 import http from 'http'
@@ -10,7 +9,7 @@ import {
 	DummyFirehose,
 	FayeFirehose,
 	SocketIOFirehose,
-} from '../../src/index'
+} from '../../src/index.js'
 const FAYE_URL = 'http://localhost:8000/faye'
 const SOCKET_URL = 'http://localhost:3000'
 
@@ -24,7 +23,7 @@ describe('Test Feed Operations', () => {
 		userGeorge
 
 	const options = { bull: false }
-	let fm = new FeedManager(db, redis, options)
+	let fm = new FeedManager(db, options)
 
 	before(async () => {
 		await dropDBs()
