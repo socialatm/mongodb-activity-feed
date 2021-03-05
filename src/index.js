@@ -135,7 +135,6 @@ export class FeedManager {
 				if (operations.length >= 1) {
 					await ActivityFeed.bulkWrite(operations, { ordered: false })
 				}
-				//await lock.unlock()
 			}
 		}
 	}
@@ -153,8 +152,6 @@ export class FeedManager {
 			feed: source,
 			origin: target,
 		})
-
-		//await lock.unlock()
 		return follow
 	}
 
