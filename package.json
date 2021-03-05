@@ -36,7 +36,6 @@
 		"mongoose": "^5.11.18",
 		"mongoose-autopopulate": "^0.12.3",
 		"mongoose-timestamp": "^0.6.0",
-		"redlock": "^3.1.2",
 		"socket.io": "^2.1.1",
 		"socket.io-redis": "^5.2.0",
 		"stats-lite": "^2.1.1",
