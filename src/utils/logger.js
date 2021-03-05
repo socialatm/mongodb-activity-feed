@@ -1,8 +1,7 @@
-import config from '../config'
 import winston from 'winston'
 
 const logger = winston.createLogger({
-	level: config.logger.level,
+	level: 'debug',
 	transports: [new winston.transports.Console()],
 })
 
